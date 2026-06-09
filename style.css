@@ -1,14 +1,4 @@
-/* ==========================================================================
-   PARSE WEBSITE STYLESHEET
-   Basic pastel blue-green version
-   ========================================================================== */
-
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
-
-/* ==========================================================================
-   VARIABLES
-   ========================================================================== */
 
 :root {
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -45,10 +35,6 @@
   --transition-smooth: all 0.3s ease;
 }
 
-/* ==========================================================================
-   RESET & BASE
-   ========================================================================== */
-
 * {
   margin: 0;
   padding: 0;
@@ -71,7 +57,6 @@ body {
   background: var(--bg-primary);
 }
 
-/* Soft background circles, not white */
 body::before {
   content: '';
   position: absolute;
