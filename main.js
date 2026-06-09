@@ -4,6 +4,49 @@
              Photo preview modal, and Three.js 3D STL Loader.
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
+  // --- 0. Dynamic Path Correction Logic ---
+  // If we are running inside the 'parse' folder (e.g., in a local server inside 'parse',
+  // or a GitHub repo named 'parse', or double-clicked from file system inside 'parse'),
+  // we automatically adjust paths to strip the 'parse/' prefix to avoid double-nesting.
+  const pathName = window.location.pathname;
+  const isNested = pathName.includes('/parse/') || pathName.endsWith('/parse') || pathName.endsWith('/parse/');
+  
+  if (isNested) {
+    console.log("Execution inside 'parse' folder detected. Auto-adjusting asset paths...");
+    
+    // 1. Fix Image sources
+    document.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src');
+      if (src && src.startsWith('parse/')) {
+        img.src = src.replace(/^parse\//, '');
+      }
+    });
+    // 2. Fix STL Viewer attributes
+    document.querySelectorAll('.stl-panel').forEach(panel => {
+      const stlSrc = panel.getAttribute('data-stl-src');
+      if (stlSrc && stlSrc.startsWith('parse/')) {
+        panel.setAttribute('data-stl-src', stlSrc.replace(/^parse\//, ''));
+      }
+    });
+    // 3. Fix download link destinations
+    document.querySelectorAll('a[download]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('parse/')) {
+        link.href = href.replace(/^parse\//, '');
+      }
+    });
+  }
+  // --- Extra Safety: Image loading fallback ---
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => {
+      const src = img.getAttribute('src');
+      if (src && src.startsWith('parse/')) {
+        const fallbackSrc = src.replace(/^parse\//, '');
+        console.log(`Fallback: Failed to load image ${src}, trying ${fallbackSrc}`);
+        img.src = fallbackSrc;
+      }
+    });
+  });
   // --- 1. Navigation Scrolled State & Active Indicator ---
   const header = document.getElementById('site-header');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -199,6 +242,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       this.hasLoadedDefault = true;
+      // Get latest corrected source attribute (in case it was updated by path correction script)
+      this.defaultSrc = this.panel.getAttribute('data-stl-src');
       if (!this.defaultSrc) {
         if (this.dropzone) this.dropzone.style.display = 'flex';
         return;
@@ -207,27 +252,39 @@ document.addEventListener('DOMContentLoaded', () => {
       if (this.dropzone) this.dropzone.style.display = 'none';
       this.initThree();
       const loader = new THREE.STLLoader();
-      loader.load(
-        this.defaultSrc,
-        (geometry) => {
-          this.handleGeometry(geometry);
-        },
-        (xhr) => {
-          // Progress tracking could go here
-        },
-        (error) => {
-          console.warn('Error loading default STL (likely CORS or offline fallback):', error);
-          this.hasLoadedDefault = false; // Allow retry
-          if (this.spinner) this.spinner.style.display = 'none';
-          if (this.dropzone) {
-            this.dropzone.style.display = 'flex';
-            const dropMsg = this.dropzone.querySelector('p');
-            if (dropMsg) {
-              dropMsg.innerHTML = 'Unable to auto-load 3D model due to CORS restrictions without a local server.<br><strong>Drag & drop the STL file here to view it manually.</strong>';
+      
+      const attemptLoad = (url) => {
+        loader.load(
+          url,
+          (geometry) => {
+            this.handleGeometry(geometry);
+          },
+          (xhr) => {
+            // Progress tracking
+          },
+          (error) => {
+            console.warn(`Failed to load STL from ${url}:`, error);
+            
+            // Try fallback without parse/ prefix if first attempt failed
+            if (url.startsWith('parse/')) {
+              const fallbackUrl = url.replace(/^parse\//, '');
+              console.log(`Attempting fallback to ${fallbackUrl}`);
+              attemptLoad(fallbackUrl);
+            } else {
+              this.hasLoadedDefault = false; // Allow retry
+              if (this.spinner) this.spinner.style.display = 'none';
+              if (this.dropzone) {
+                this.dropzone.style.display = 'flex';
+                const dropMsg = this.dropzone.querySelector('p');
+                if (dropMsg) {
+                  dropMsg.innerHTML = 'Unable to auto-load 3D model due to CORS restrictions without a local server.<br><strong>Drag & drop the STL file here to view it manually.</strong>';
+                }
+              }
             }
           }
-        }
-      );
+        );
+      };
+      attemptLoad(this.defaultSrc);
     }
     handleFileSelect(event) {
       const files = event.target.files;
@@ -257,7 +314,9 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error(error);
           alert('Error loading STL file. The file might be corrupted.');
           if (this.spinner) this.spinner.style.display = 'none';
-          if (this.dropzone) this.dropzone.style.display = 'flex';
+          if (this.dropzone) {
+            this.dropzone.style.display = 'flex';
+          }
         }
       };
       reader.readAsArrayBuffer(file);
@@ -304,9 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     getModuleColor() {
       const moduleNum = this.panel.getAttribute('data-module');
-      if (moduleNum === '1') return 0x6366f1; // Indigo
-      if (moduleNum === '2') return 0x10b981; // Emerald
-      if (moduleNum === '3') return 0xf59e0b; // Amber
+      if (moduleNum === '1') return 0x8b5cf6; // Lilac
+      if (moduleNum === '2') return 0x3b82f6; // Blue
+      if (moduleNum === '3') return 0x558789; // Teal
       return 0xffffff;
     }
     resetCamera() {
@@ -320,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.isAutoRotating = !this.isAutoRotating;
       this.autorotateBtn.textContent = `Auto-Rotate: ${this.isAutoRotating ? 'On' : 'Off'}`;
       if (this.isAutoRotating) {
-        this.autorotateBtn.style.color = '#818cf8';
+        this.autorotateBtn.style.color = '#8b5cf6';
       } else {
         this.autorotateBtn.style.color = '';
       }
