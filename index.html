@@ -45,15 +45,18 @@
   <main>
     <!-- Home / Hero Section -->
     <section class="hero-section" id="home">
+      <div class="hero-tag">Research Paper • IDC 2026</div>
       <h1 class="hero-title">Parse: Teaching How AI Learns Through Tangible Unplugged Modules</h1>
+      
+      <!-- Project main photo (above description, not in a box) -->
+      <div class="hero-image-container">
+        <img src="parse/photos/parse.png" alt="Parse: Unplugged AI Learning Modules" class="hero-project-image">
+      </div>
       <p class="hero-subtitle">
-        Externalizing core computational mechanisms of machine learning (exploration, constraint propagation, and statistical inference) through physical, tactile interaction.
+        We present <strong>Parse</strong>, a set of three unplugged tangible modules designed for middle school students that externalize core computational mechanisms underlying how learning systems operate—including search, constraint-based refinement, and statistical inference from feedback—into hands-on interaction.
       </p>
       
       <div class="hero-meta">
-        <div class="meta-item">
-          Published in: <strong>ACM IDC '26 (Interaction Design and Children)</strong>
-        </div>
         <div class="meta-item">
           DOI: <strong><a href="https://doi.org/10.1145/3773077.3812137" target="_blank">10.1145/3773077.3812137</a></strong>
         </div>
@@ -63,30 +66,19 @@
         <a href="#modules" class="btn btn-primary">Explore Modules</a>
         <a href="https://doi.org/10.1145/3773077.3812137" target="_blank" class="btn btn-secondary">Read Full Paper</a>
       </div>
-    </section>
-    <!-- About Project / Abstract Section -->
-    <section class="about-project">
-      <div class="glass-card">
-        <h2 class="card-title">
-          <span style="font-size: 1.5rem;">📖</span> Project Abstract
-        </h2>
-        <p class="abstract-text">
-          As artificial intelligence becomes increasingly embedded in daily life, the need to introduce its fundamental concepts at earlier stages of education grows. Current approaches to AI education largely rely on digital tools that present model behavior through screen-based interfaces, limiting learners’ ability to access and interpret underlying processes. We present <strong>Parse</strong>, a set of three unplugged tangible modules designed for middle school students that externalize core computational mechanisms underlying how learning systems operate, including search, constraint-based refinement, and inference from feedback into hands-on interaction. Developed through an iterative Research through Design process, Parse demonstrates that embodied, unplugged interaction can extend AI education beyond supervised learning into feedback-derived processes, and that feedback structure is a critical design variable in tangible AI learning systems.
-        </p>
-        
-        <div class="about-features">
-          <div class="feature-item">
-            <h3>Unplugged AI Learning</h3>
-            <p>No screens, internet access, or technical infrastructure required. Optimized for low-resource environments.</p>
-          </div>
-          <div class="feature-item">
-            <h3>Tangible & Embodied</h3>
-            <p>Physical interaction with manipulable objects supports conceptual grounding of abstract STEM and ML processes.</p>
-          </div>
-          <div class="feature-item">
-            <h3>Feedback-Derived</h3>
-            <p>Surfaces pattern discovery through random search, constraint reduction, and model updating.</p>
-          </div>
+      <!-- Clean, non-box features directly on the Home page -->
+      <div class="home-features">
+        <div class="home-feature-item">
+          <h3>Unplugged AI Learning</h3>
+          <p>No screens, internet access, or technical infrastructure required. Optimized for low-resource environments.</p>
+        </div>
+        <div class="home-feature-item">
+          <h3>Tangible & Embodied</h3>
+          <p>Physical interaction with manipulable objects supports conceptual grounding of abstract STEM and ML processes.</p>
+        </div>
+        <div class="home-feature-item">
+          <h3>Feedback-Derived</h3>
+          <p>Surfaces pattern discovery through random search, constraint reduction, and model updating.</p>
         </div>
       </div>
     </section>
@@ -129,31 +121,18 @@
           
           <div class="module-visual-container">
             <div class="visual-tabs">
-              <button class="tab-btn active" data-tab="m1-photos">📷 Photos</button>
-              <button class="tab-btn" data-tab="m1-3d">🧊 3D CAD Viewer</button>
+              <button class="tab-btn active" data-tab="m1-photos">Photos</button>
+              <button class="tab-btn" data-tab="m1-3d">3D CAD Viewer</button>
             </div>
             
             <div class="tab-content active" id="m1-photos">
               <div class="photo-panel">
-                <div class="photo-placeholder">
-                  <div class="photo-icon">📷</div>
-                  <p>Module 1: Random Search physical module photos</p>
-                  <div class="upload-btn-wrapper">
-                    <button class="btn btn-secondary btn-sm">Add Photos</button>
-                    <input type="file" class="photo-uploader" accept="image/*" data-target="m1-photo-view" />
-                  </div>
-                </div>
-                <img id="m1-photo-view" class="preview-image" style="display: none;" alt="Module 1 physical visual" />
+                <img src="parse/photos/mod1.png" class="preview-image" alt="Module 1: Random Search" />
               </div>
             </div>
             
             <div class="tab-content" id="m1-3d">
-              <div class="stl-panel" data-module="1">
-                <div class="stl-dropzone">
-                  <div class="stl-icon">🧊</div>
-                  <p>Drag & drop your Module 1 <strong>.stl</strong> CAD model file here, or click to upload.</p>
-                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
-                </div>
+              <div class="stl-panel" data-module="1" data-stl-src="parse/stl/mod1.stl">
                 <div class="stl-loading-spinner">
                   <div class="spinner"></div>
                   <span>Parsing STL Model...</span>
@@ -163,6 +142,16 @@
                   <button class="stl-control-btn reset">Reset View</button>
                   <button class="stl-control-btn autorotate">Auto-Rotate: Off</button>
                 </div>
+                <!-- Dropzone fallback if auto-load fails (e.g. CORS/Offline) -->
+                <div class="stl-dropzone" style="display: none;">
+                  <p>Drag & drop your <strong>.stl</strong> file here to upload manually.</p>
+                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
+                </div>
+              </div>
+              <div class="stl-download-container">
+                <a href="parse/stl/mod1.stl" download class="btn btn-secondary download-stl-btn">
+                  Download STL File
+                </a>
               </div>
             </div>
           </div>
@@ -195,31 +184,18 @@
           
           <div class="module-visual-container">
             <div class="visual-tabs">
-              <button class="tab-btn active" data-tab="m2-photos">📷 Photos</button>
-              <button class="tab-btn" data-tab="m2-3d">🧊 3D CAD Viewer</button>
+              <button class="tab-btn active" data-tab="m2-photos">Photos</button>
+              <button class="tab-btn" data-tab="m2-3d">3D CAD Viewer</button>
             </div>
             
             <div class="tab-content active" id="m2-photos">
               <div class="photo-panel">
-                <div class="photo-placeholder">
-                  <div class="photo-icon">📷</div>
-                  <p>Module 2: Iterative Refinement physical module photos</p>
-                  <div class="upload-btn-wrapper">
-                    <button class="btn btn-secondary btn-sm">Add Photos</button>
-                    <input type="file" class="photo-uploader" accept="image/*" data-target="m2-photo-view" />
-                  </div>
-                </div>
-                <img id="m2-photo-view" class="preview-image" style="display: none;" alt="Module 2 physical visual" />
+                <img src="parse/photos/mod2.png" class="preview-image" alt="Module 2: Iterative Refinement" />
               </div>
             </div>
             
             <div class="tab-content" id="m2-3d">
-              <div class="stl-panel" data-module="2">
-                <div class="stl-dropzone">
-                  <div class="stl-icon">🧊</div>
-                  <p>Drag & drop your Module 2 <strong>.stl</strong> CAD model file here, or click to upload.</p>
-                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
-                </div>
+              <div class="stl-panel" data-module="2" data-stl-src="parse/stl/mod2.stl">
                 <div class="stl-loading-spinner">
                   <div class="spinner"></div>
                   <span>Parsing STL Model...</span>
@@ -229,6 +205,16 @@
                   <button class="stl-control-btn reset">Reset View</button>
                   <button class="stl-control-btn autorotate">Auto-Rotate: Off</button>
                 </div>
+                <!-- Dropzone fallback if auto-load fails (e.g. CORS/Offline) -->
+                <div class="stl-dropzone" style="display: none;">
+                  <p>Drag & drop your <strong>.stl</strong> file here to upload manually.</p>
+                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
+                </div>
+              </div>
+              <div class="stl-download-container">
+                <a href="parse/stl/mod2.stl" download class="btn btn-secondary download-stl-btn">
+                  Download STL File
+                </a>
               </div>
             </div>
           </div>
@@ -261,31 +247,18 @@
           
           <div class="module-visual-container">
             <div class="visual-tabs">
-              <button class="tab-btn active" data-tab="m3-photos">📷 Photos</button>
-              <button class="tab-btn" data-tab="m3-3d">🧊 3D CAD Viewer</button>
+              <button class="tab-btn active" data-tab="m3-photos">Photos</button>
+              <button class="tab-btn" data-tab="m3-3d">3D CAD Viewer</button>
             </div>
             
             <div class="tab-content active" id="m3-photos">
               <div class="photo-panel">
-                <div class="photo-placeholder">
-                  <div class="photo-icon">📷</div>
-                  <p>Module 3: Strategic Inference physical module photos</p>
-                  <div class="upload-btn-wrapper">
-                    <button class="btn btn-secondary btn-sm">Add Photos</button>
-                    <input type="file" class="photo-uploader" accept="image/*" data-target="m3-photo-view" />
-                  </div>
-                </div>
-                <img id="m3-photo-view" class="preview-image" style="display: none;" alt="Module 3 physical visual" />
+                <img src="parse/photos/mod3.png" class="preview-image" alt="Module 3: Strategic Inference" />
               </div>
             </div>
             
             <div class="tab-content" id="m3-3d">
-              <div class="stl-panel" data-module="3">
-                <div class="stl-dropzone">
-                  <div class="stl-icon">🧊</div>
-                  <p>Drag & drop your Module 3 <strong>.stl</strong> CAD model file here, or click to upload.</p>
-                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
-                </div>
+              <div class="stl-panel" data-module="3" data-stl-src="parse/stl/mod3.stl">
                 <div class="stl-loading-spinner">
                   <div class="spinner"></div>
                   <span>Parsing STL Model...</span>
@@ -295,6 +268,16 @@
                   <button class="stl-control-btn reset">Reset View</button>
                   <button class="stl-control-btn autorotate">Auto-Rotate: Off</button>
                 </div>
+                <!-- Dropzone fallback if auto-load fails (e.g. CORS/Offline) -->
+                <div class="stl-dropzone" style="display: none;">
+                  <p>Drag & drop your <strong>.stl</strong> file here to upload manually.</p>
+                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
+                </div>
+              </div>
+              <div class="stl-download-container">
+                <a href="parse/stl/mod3.stl" download class="btn btn-secondary download-stl-btn">
+                  Download STL File
+                </a>
               </div>
             </div>
           </div>
@@ -324,8 +307,8 @@
           <div class="author-role">Co-Author</div>
           <p class="author-bio">Researcher and designer at ideaLab FabLab, Hisar School, Turkiye.</p>
           <div class="author-links">
-            <a href="mailto:ediz.umur@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
-            <a href="https://orcid.org/0009-0004-5972-4537" target="_blank" class="author-link-btn">🆔 ORCID</a>
+            <a href="mailto:ediz.umur@hisarschool.k12.tr" class="author-link-btn">Email</a>
+            <a href="https://orcid.org/0009-0004-5972-4537" target="_blank" class="author-link-btn">ORCID</a>
           </div>
         </div>
         <!-- Irmak Ureten -->
@@ -335,8 +318,8 @@
           <div class="author-role">Co-Author</div>
           <p class="author-bio">Researcher and designer at ideaLab FabLab, Hisar School, Turkiye.</p>
           <div class="author-links">
-            <a href="mailto:irmak.ureten@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
-            <a href="https://orcid.org/0009-0003-0631-1002" target="_blank" class="author-link-btn">🆔 ORCID</a>
+            <a href="mailto:irmak.ureten@hisarschool.k12.tr" class="author-link-btn">Email</a>
+            <a href="https://orcid.org/0009-0003-0631-1002" target="_blank" class="author-link-btn">ORCID</a>
           </div>
         </div>
         <!-- Kaan Koca -->
@@ -346,8 +329,8 @@
           <div class="author-role">Co-Author</div>
           <p class="author-bio">Researcher and designer at ideaLab FabLab, Hisar School, Turkiye.</p>
           <div class="author-links">
-            <a href="mailto:kaan.koca@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
-            <a href="https://orcid.org/0000-0002-1464-3045" target="_blank" class="author-link-btn">🆔 ORCID</a>
+            <a href="mailto:kaan.koca@hisarschool.k12.tr" class="author-link-btn">Email</a>
+            <a href="https://orcid.org/0000-0002-1464-3045" target="_blank" class="author-link-btn">ORCID</a>
           </div>
         </div>
         <!-- Sedat Yalcin -->
@@ -357,8 +340,8 @@
           <div class="author-role">Project Advisor</div>
           <p class="author-bio">Advisor and Lab Manager at ideaLab FabLab, Hisar School, Turkiye.</p>
           <div class="author-links">
-            <a href="mailto:sedat.yalcin@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
-            <a href="https://orcid.org/0009-0001-2239-451X" target="_blank" class="author-link-btn">🆔 ORCID</a>
+            <a href="mailto:sedat.yalcin@hisarschool.k12.tr" class="author-link-btn">Email</a>
+            <a href="https://orcid.org/0009-0001-2239-451X" target="_blank" class="author-link-btn">ORCID</a>
           </div>
         </div>
       </div>
