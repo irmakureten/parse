@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parse: Teaching How AI Learns Through Tangible Unplugged Modules</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Parse is a set of three physical unplugged modules designed to teach middle school students the fundamental computational mechanisms of AI learning: search, iterative narrowing, and strategic inference.">
+  <meta name="keywords" content="AI education, unplugged learning, tangible interaction, machine learning, unsupervised learning, research through design, middle school, FabLab">
+  <meta name="author" content="Ediz Umur, Irmak Ureten, Kaan Koca, Sedat Yalcin">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Three.js and STLLoader CDNs for 3D Viewer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+</head>
+<body>
+  <!-- Site Header / Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="logo">
+      <a href="#home">
+        PARSE<span class="logo-dot"></span>
+      </a>
+    </div>
+    
+    <nav>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#modules" class="nav-link">Modules</a></li>
+        <li><a href="#about-us" class="nav-link">About Us</a></li>
+      </ul>
+    </nav>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  <!-- Main Content Area -->
+  <main>
+    <!-- Home / Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-tag">Research Paper • IDC 2026</div>
+      <h1 class="hero-title">Parse: Teaching How AI Learns Through Tangible Unplugged Modules</h1>
+      <p class="hero-subtitle">
+        Externalizing core computational mechanisms of machine learning (exploration, constraint propagation, and statistical inference) through physical, tactile interaction.
+      </p>
+      
+      <div class="hero-meta">
+        <div class="meta-item">
+          Published in: <strong>ACM IDC '26 (Interaction Design and Children)</strong>
+        </div>
+        <div class="meta-item">
+          DOI: <strong><a href="https://doi.org/10.1145/3773077.3812137" target="_blank">10.1145/3773077.3812137</a></strong>
+        </div>
+        <div class="meta-item">
+          Location: <strong>Brighton, United Kingdom</strong>
+        </div>
+      </div>
+      
+      <div class="hero-cta">
+        <a href="#modules" class="btn btn-primary">Explore Modules</a>
+        <a href="https://doi.org/10.1145/3773077.3812137" target="_blank" class="btn btn-secondary">Read Full Paper</a>
+      </div>
+    </section>
+    <!-- About Project / Abstract Section -->
+    <section class="about-project">
+      <div class="glass-card">
+        <h2 class="card-title">
+          <span style="font-size: 1.5rem;">📖</span> Project Abstract
+        </h2>
+        <p class="abstract-text">
+          As artificial intelligence becomes increasingly embedded in daily life, the need to introduce its fundamental concepts at earlier stages of education grows. Current approaches to AI education largely rely on digital tools that present model behavior through screen-based interfaces, limiting learners’ ability to access and interpret underlying processes. We present <strong>Parse</strong>, a set of three unplugged tangible modules designed for middle school students that externalize core computational mechanisms underlying how learning systems operate, including search, constraint-based refinement, and inference from feedback into hands-on interaction. Developed through an iterative Research through Design process, Parse demonstrates that embodied, unplugged interaction can extend AI education beyond supervised learning into feedback-derived processes, and that feedback structure is a critical design variable in tangible AI learning systems.
+        </p>
+        
+        <div class="about-features">
+          <div class="feature-item">
+            <div class="feature-icon">🔌</div>
+            <h3>Unplugged AI Learning</h3>
+            <p>No screens, internet access, or technical infrastructure required. Optimized for low-resource environments.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🧩</div>
+            <h3>Tangible & Embodied</h3>
+            <p>Physical interaction with manipulable objects supports conceptual grounding of abstract STEM and ML processes.</p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🔄</div>
+            <h3>Feedback-Derived</h3>
+            <p>Surfaces pattern discovery through random search, constraint reduction, and model updating.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Modules Showcase Section -->
+    <section class="modules-section" id="modules">
+      <div class="section-header">
+        <span class="section-subtitle">Tactile Mechanisms</span>
+        <h2 class="section-title">The Three Modules</h2>
+        <p class="section-desc">
+          Each module isolates a distinct problem in ML: where to search (Module 1), how to narrow (Module 2), and how to build a model (Module 3).
+        </p>
+      </div>
+      <div class="modules-container">
+        
+        <!-- Module 1: Random Search -->
+        <article class="module-card m1" id="module-1">
+          <div class="module-info">
+            <div class="module-number">01 / MODULE ONE</div>
+            <h3 class="module-title">Random Search</h3>
+            <div class="module-badge">Random Exploration</div>
+            
+            <div class="module-concept">
+              <div class="module-concept-title">Core AI Concept</div>
+              <p class="module-concept-body">
+                Exhaustive exploration of a solution space in the absence of proximity indicators (brute-force or grid search).
+              </p>
+            </div>
+            
+            <p class="module-desc">
+              The module contains two wheels, each with eight orientations (7 walls, 1 passage). The learner rotates both wheels, locks them, and drops a ball. Only one combination out of 64 permits passage. Without a proximity signal, the learner must explore exhaustively.
+            </p>
+            
+            <ul class="module-specs">
+              <li>64 unique configurations</li>
+              <li>Exhaustive search strategy</li>
+              <li>No proximity feedback</li>
+              <li>Rotatable physical wheels</li>
+            </ul>
+          </div>
+          
+          <div class="module-visual-container">
+            <div class="visual-tabs">
+              <button class="tab-btn active" data-tab="m1-photos">📷 Photos</button>
+              <button class="tab-btn" data-tab="m1-3d">🧊 3D CAD Viewer</button>
+            </div>
+            
+            <div class="tab-content active" id="m1-photos">
+              <div class="photo-panel">
+                <div class="photo-placeholder">
+                  <div class="photo-icon">📷</div>
+                  <p>Module 1: Random Search physical module photos</p>
+                  <div class="upload-btn-wrapper">
+                    <button class="btn btn-secondary btn-sm">Add Photos</button>
+                    <input type="file" class="photo-uploader" accept="image/*" data-target="m1-photo-view" />
+                  </div>
+                </div>
+                <img id="m1-photo-view" class="preview-image" style="display: none;" alt="Module 1 physical visual" />
+              </div>
+            </div>
+            
+            <div class="tab-content" id="m1-3d">
+              <div class="stl-panel" data-module="1">
+                <div class="stl-dropzone">
+                  <div class="stl-icon">🧊</div>
+                  <p>Drag & drop your Module 1 <strong>.stl</strong> CAD model file here, or click to upload.</p>
+                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
+                </div>
+                <div class="stl-loading-spinner">
+                  <div class="spinner"></div>
+                  <span>Parsing STL Model...</span>
+                </div>
+                <canvas class="stl-canvas"></canvas>
+                <div class="stl-viewer-controls" style="display: none;">
+                  <button class="stl-control-btn reset">Reset View</button>
+                  <button class="stl-control-btn autorotate">Auto-Rotate: Off</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Module 2: Iterative Refinement -->
+        <article class="module-card m2" id="module-2">
+          <div class="module-info">
+            <div class="module-number">02 / MODULE TWO</div>
+            <h3 class="module-title">Iterative Refinement</h3>
+            <div class="module-badge">Constraint Propagation</div>
+            
+            <div class="module-concept">
+              <div class="module-concept-title">Core AI Concept</div>
+              <p class="module-concept-body">
+                Constraint satisfaction and version space reduction. Progressively narrowing hypotheses based on structured matches.
+              </p>
+            </div>
+            
+            <p class="module-desc">
+              Features six unique cylindrical profiles and six matching keys. Three profiles are enclosed. A correct fit gives immediate auditory click feedback. Each successful match decreases the remaining options, modeling constraint propagation.
+            </p>
+            
+            <ul class="module-specs">
+              <li>Cylindrical profile tubes</li>
+              <li>Iterative narrowing</li>
+              <li>Immediate click feedback</li>
+              <li>Hypothesis reduction</li>
+            </ul>
+          </div>
+          
+          <div class="module-visual-container">
+            <div class="visual-tabs">
+              <button class="tab-btn active" data-tab="m2-photos">📷 Photos</button>
+              <button class="tab-btn" data-tab="m2-3d">🧊 3D CAD Viewer</button>
+            </div>
+            
+            <div class="tab-content active" id="m2-photos">
+              <div class="photo-panel">
+                <div class="photo-placeholder">
+                  <div class="photo-icon">📷</div>
+                  <p>Module 2: Iterative Refinement physical module photos</p>
+                  <div class="upload-btn-wrapper">
+                    <button class="btn btn-secondary btn-sm">Add Photos</button>
+                    <input type="file" class="photo-uploader" accept="image/*" data-target="m2-photo-view" />
+                  </div>
+                </div>
+                <img id="m2-photo-view" class="preview-image" style="display: none;" alt="Module 2 physical visual" />
+              </div>
+            </div>
+            
+            <div class="tab-content" id="m2-3d">
+              <div class="stl-panel" data-module="2">
+                <div class="stl-dropzone">
+                  <div class="stl-icon">🧊</div>
+                  <p>Drag & drop your Module 2 <strong>.stl</strong> CAD model file here, or click to upload.</p>
+                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
+                </div>
+                <div class="stl-loading-spinner">
+                  <div class="spinner"></div>
+                  <span>Parsing STL Model...</span>
+                </div>
+                <canvas class="stl-canvas"></canvas>
+                <div class="stl-viewer-controls" style="display: none;">
+                  <button class="stl-control-btn reset">Reset View</button>
+                  <button class="stl-control-btn autorotate">Auto-Rotate: Off</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Module 3: Strategic Inference -->
+        <article class="module-card m3" id="module-3">
+          <div class="module-info">
+            <div class="module-number">03 / MODULE THREE</div>
+            <h3 class="module-title">Strategic Inference</h3>
+            <div class="module-badge">Statistical Inference</div>
+            
+            <div class="module-concept">
+              <div class="module-concept-title">Core AI Concept</div>
+              <p class="module-concept-body">
+                Model building through observation aggregation. Estimating hidden distributions over time to optimize prediction.
+              </p>
+            </div>
+            
+            <p class="module-desc">
+              Consists of seven sliding keys with hole configurations and a grid holding three hidden balls. Resolving coordinates across trials builds a probability map of the hidden layout, mimicking statistical model estimation.
+            </p>
+            
+            <ul class="module-specs">
+              <li>Sliding keys grid</li>
+              <li>Probability mapping</li>
+              <li>Delayed distributed feedback</li>
+              <li>Hidden distribution mapping</li>
+            </ul>
+          </div>
+          
+          <div class="module-visual-container">
+            <div class="visual-tabs">
+              <button class="tab-btn active" data-tab="m3-photos">📷 Photos</button>
+              <button class="tab-btn" data-tab="m3-3d">🧊 3D CAD Viewer</button>
+            </div>
+            
+            <div class="tab-content active" id="m3-photos">
+              <div class="photo-panel">
+                <div class="photo-placeholder">
+                  <div class="photo-icon">📷</div>
+                  <p>Module 3: Strategic Inference physical module photos</p>
+                  <div class="upload-btn-wrapper">
+                    <button class="btn btn-secondary btn-sm">Add Photos</button>
+                    <input type="file" class="photo-uploader" accept="image/*" data-target="m3-photo-view" />
+                  </div>
+                </div>
+                <img id="m3-photo-view" class="preview-image" style="display: none;" alt="Module 3 physical visual" />
+              </div>
+            </div>
+            
+            <div class="tab-content" id="m3-3d">
+              <div class="stl-panel" data-module="3">
+                <div class="stl-dropzone">
+                  <div class="stl-icon">🧊</div>
+                  <p>Drag & drop your Module 3 <strong>.stl</strong> CAD model file here, or click to upload.</p>
+                  <input type="file" class="stl-uploader" accept=".stl" style="display: none;" />
+                </div>
+                <div class="stl-loading-spinner">
+                  <div class="spinner"></div>
+                  <span>Parsing STL Model...</span>
+                </div>
+                <canvas class="stl-canvas"></canvas>
+                <div class="stl-viewer-controls" style="display: none;">
+                  <button class="stl-control-btn reset">Reset View</button>
+                  <button class="stl-control-btn autorotate">Auto-Rotate: Off</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- About Us Section -->
+    <section class="about-section" id="about-us">
+      <div class="section-header">
+        <span class="section-subtitle">The Team</span>
+        <h2 class="section-title">About Us</h2>
+        <p class="section-desc">
+          Meet the designers and researchers from Hisar School who developed Parse.
+        </p>
+      </div>
+      <div class="about-intro-card glass-card">
+        <h3>Research & FabLab Development</h3>
+        <p>
+          Parse was designed and tested in classrooms through five iterative Research through Design cohorts involving 120 middle school students. The project shows that unplugged physical modules can make complex machine learning concepts accessible through immediate, tactile interactions.
+        </p>
+      </div>
+      <div class="authors-grid">
+        <!-- Ediz Umur -->
+        <div class="author-card">
+          <div class="author-avatar">EU</div>
+          <h3 class="author-name">Ediz Umur</h3>
+          <div class="author-role">Co-Author</div>
+          <p class="author-bio">Researcher and designer at ideaLab FabLab, Hisar School, Turkiye.</p>
+          <div class="author-links">
+            <a href="mailto:ediz.umur@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
+            <a href="https://orcid.org/0009-0004-5972-4537" target="_blank" class="author-link-btn">🆔 ORCID</a>
+          </div>
+        </div>
+        <!-- Irmak Ureten -->
+        <div class="author-card">
+          <div class="author-avatar">IU</div>
+          <h3 class="author-name">Irmak Ureten</h3>
+          <div class="author-role">Co-Author</div>
+          <p class="author-bio">Researcher and designer at ideaLab FabLab, Hisar School, Turkiye.</p>
+          <div class="author-links">
+            <a href="mailto:irmak.ureten@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
+            <a href="https://orcid.org/0009-0003-0631-1002" target="_blank" class="author-link-btn">🆔 ORCID</a>
+          </div>
+        </div>
+        <!-- Kaan Koca -->
+        <div class="author-card">
+          <div class="author-avatar">KK</div>
+          <h3 class="author-name">Kaan Koca</h3>
+          <div class="author-role">Co-Author</div>
+          <p class="author-bio">Researcher and designer at ideaLab FabLab, Hisar School, Turkiye.</p>
+          <div class="author-links">
+            <a href="mailto:kaan.koca@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
+            <a href="https://orcid.org/0000-0002-1464-3045" target="_blank" class="author-link-btn">🆔 ORCID</a>
+          </div>
+        </div>
+        <!-- Sedat Yalcin -->
+        <div class="author-card">
+          <div class="author-avatar">SY</div>
+          <h3 class="author-name">Sedat Yalcin</h3>
+          <div class="author-role">Project Advisor</div>
+          <p class="author-bio">Advisor and Lab Manager at ideaLab FabLab, Hisar School, Turkiye.</p>
+          <div class="author-links">
+            <a href="mailto:sedat.yalcin@hisarschool.k12.tr" class="author-link-btn">✉ Email</a>
+            <a href="https://orcid.org/0009-0001-2239-451X" target="_blank" class="author-link-btn">🆔 ORCID</a>
+          </div>
+        </div>
+      </div>
+      <div class="affiliation-info">
+        <h4>ideaLab FabLab • Hisar School</h4>
+        <p>Istanbul, Turkiye</p>
+      </div>
+    </section>
+  </main>
+  <!-- Footer Area -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h4>APA Reference Format</h4>
+        <div class="footer-citation">
+          Umur, E., Ureten, I., Koca, K., & Yalçın, S. (2026). Parse: Teaching How AI Learns Through Tangible Unplugged Modules. In Proceedings of the 25th Interaction Design and Children Conference (IDC '26), June 22–25, 2026, Brighton, United Kingdom. ACM, New York, NY, USA. DOI: 10.1145/3773077.3812137
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-logo">PARSE<span class="logo-dot"></span></div>
+        <p>© 2026 Copyright held by the owners/authors.</p>
+        <div class="footer-license">
+          <img src="https://www.acm.org/binaries/content/gallery/acm/publications/cc-by/cc-by.jpg" alt="CC-BY License">
+          <span>Licensed under CC-BY 4.0 International</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Interaction Design and Children Conference (IDC '26) • Brighton, UK</p>
+      <p><a href="https://doi.org/10.1145/3773077.3812137" target="_blank">View Paper on ACM Digital Library</a></p>
+    </div>
+  </footer>
+  <!-- Lightbox Image Modal -->
+  <div class="modal-viewer" id="modal-viewer">
+    <button class="modal-close" id="modal-close">×</button>
+    <img src="" alt="Modal Zoomed Content" class="modal-content" id="modal-content" />
+  </div>
+  <!-- JavaScript Behavior Code -->
+  <script src="main.js"></script>
+</body>
+</html>
